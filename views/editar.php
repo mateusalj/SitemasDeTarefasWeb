@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("UPDATE tarefas SET nome = ?, custo = ?, data_limite = ? WHERE id = ?");
     $stmt->execute([$nome, $custo, $data_limite, $id]);
 
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>

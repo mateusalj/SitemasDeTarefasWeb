@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO tarefas (nome, custo, data_limite, ordem) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nome, $custo, $data_limite, $ordem]);
 
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>

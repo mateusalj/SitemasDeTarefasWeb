@@ -1,5 +1,5 @@
 <?php
-require '../models/conexao.php';
+require './models/conexao.php';
 
 $query = $conn->query("SELECT * FROM tarefas ORDER BY ordem");
 $tarefas = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -11,7 +11,7 @@ $tarefas = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
     <h1>Lista de Tarefas</h1>
@@ -31,22 +31,22 @@ $tarefas = $query->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= number_format($tarefa['custo'], 2, ',', '.') ?></td>
                     <td><?= date('d/m/Y', strtotime($tarefa['data_limite'])) ?></td>
                     <td>
-                        <a href="editar.php?id=<?= $tarefa['id'] ?>">✏️</a>
+                        <a href="views/editar.php?id=<?= $tarefa['id'] ?>">✏️</a>
                         <a href="#" onclick="confirmarExclusao(<?= $tarefa['id'] ?>)">🗑️</a>
-                        <a href="../controllers/reordenar.php?id=<?= $tarefa['id'] ?>&direcao=subir">↑</a>
-                        <a href="../controllers/reordenar.php?id=<?= $tarefa['id'] ?>&direcao=descer">↓</a>
+                        <a href="./controllers/reordenar.php?id=<?= $tarefa['id'] ?>&direcao=subir">↑</a>
+                        <a href="./controllers/reordenar.php?id=<?= $tarefa['id'] ?>&direcao=descer">↓</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-    <button onclick="window.location.href='incluir.php'">Incluir Tarefa</button>
+    <button onclick="window.location.href='views/incluir.php'">Incluir Tarefa</button>
 
     <script>
         function confirmarExclusao(id) {
             if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
-                window.location.href = `../controllers/excluir.php?id=${id}`;
+                window.location.href = `./controllers/excluir.php?id=${id}`;
             }
         }
     </script>
